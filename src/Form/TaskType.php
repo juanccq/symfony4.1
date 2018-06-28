@@ -6,6 +6,7 @@ use App\Entity\Task;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class TaskType extends AbstractType
 {
@@ -13,7 +14,14 @@ class TaskType extends AbstractType
     {
         $builder
             ->add('task')
+            ->add( 'description' )
             ->add('dueDate')
+            ->add('tags', CollectionType::class, array(
+                'entry_type'    => TagType::class,
+                'entry_options' => array( 'label' => false ),
+                'allow_add'     => true,
+                'by_reference'  => false
+            ))
         ;
     }
 

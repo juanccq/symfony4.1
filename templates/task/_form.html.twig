@@ -1,4 +1,14 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_row( form.task ) }}
+    <br>
+    {{ form_row( form.dueDate ) }}
+    <br >
+    {{ form_row( form.description ) }}
+    <h3>Tags</h3>
+    <ul class="tags" data-prototype="{{ form_widget(form.tags.vars.prototype)|e('html_attr') }}">
+        {% for tag in form.tags %}
+            <li>{{ form_row( tag.name ) }}</li>
+        {% endfor %}
+    </ul>
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

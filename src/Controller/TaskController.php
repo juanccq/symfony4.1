@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Task;
+use App\Entity\Tag;
 use App\Form\TaskType;
 use App\Repository\TaskRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -29,6 +30,15 @@ class TaskController extends Controller
     public function new(Request $request): Response
     {
         $task = new Task();
+        
+//        $tag1 = new Tag();
+//        $tag1 -> setName( 'tag1' );
+//        $task -> getTags() -> add( $tag1 );
+//        
+//        $tag2 = new Tag();
+//        $tag2 -> setName( 'tag2' );
+//        $task -> getTags() -> add( $tag2 );
+//        
         $form = $this->createForm(TaskType::class, $task);
         $form->handleRequest($request);
 
